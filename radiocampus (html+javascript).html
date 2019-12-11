@@ -1,0 +1,67 @@
+
+</html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>UTM Radio Campus</title>
+    <style>
+
+        #playlist{
+        list-style: none;
+			}
+
+        #audioPlayer {
+	display: block;
+		  }
+
+    </style>
+  
+</head>
+
+<body>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/UTM-LOGO-FULL.png" alt="UTM" style="width:300px;height:98.5px;">
+
+
+    <audio src="" autoplay controls id="audioPlayer">
+        Sorry, your browser doesn't support html5!
+    </audio>
+
+<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Capstone CIG3 Radio Campus </p>
+
+    <ul id="playlist">
+        <li class="current-song"><a href="https://raw.githubusercontent.com/kinharis/test/master/intro.mp3"></a></li>
+        <li><a href="http://193.161.193.99:42675/;stream.nsv&type=mp3"></a></li>
+        
+    </ul>
+
+
+
+    <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    
+    <script>
+        audioPlayer();
+function audioPlayer(){
+            var currentSong = 0;
+            $("#audioPlayer")[0].src = $("#playlist li a")[0];
+            $("#audioPlayer")[0].play();
+            
+        
+            $("#audioPlayer")[0].addEventListener("ended", function(){
+               currentSong++;
+                if(currentSong == $("#playlist li a").length)
+                    currentSong = 0;
+            
+                $("#playlist li:eq("+currentSong+")");
+                $("#audioPlayer")[0].src = $("#playlist li a")[currentSong].href;
+                $("#audioPlayer")[0].play();
+            });
+        }
+
+
+
+    </script>
+
+
+
+</body>
+</html>
